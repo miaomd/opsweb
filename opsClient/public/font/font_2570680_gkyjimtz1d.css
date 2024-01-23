@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "sfont"; /* Project id 2570680 */
+  src: url('/font/font_2570680_gkyjimtz1d.woff2') format('woff2'),
+       url('/font/font_2570680_gkyjimtz1d.woff') format('woff'),
+       url('/font/font_2570680_gkyjimtz1d.ttf') format('truetype');
+}
+
+.sfont {
+  font-family: "sfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.system-document:before {
+  content: "\e707";
+}
+
+.system-home:before {
+  content: "\e600";
+}
+
+.system-page:before {
+  content: "\e662";
+}
+
+.system-shequ:before {
+  content: "\e67e";
+}
+
+.system-menu:before {
+  content: "\e60d";
+}
+
+.system-chart:before {
+  content: "\e61d";
+}
+
+.system-xitongzhuangtai:before {
+  content: "\e642";
+}
+
+.system-zidingyi:before {
+  content: "\eb6a";
+}
+
+.system-24gl-printer:before {
+  content: "\e9bd";
+}
+
+.system-component:before {
+  content: "\e601";
+}
+
+.system-success:before {
+  content: "\e6d0";
+}
+
+.system-xiala:before {
+  content: "\e6b9";
+}
+
+.system-s-fold:before {
+  content: "\e676";
+}
+
+.system-s-unfold:before {
+  content: "\e678";
+}
+
+.system-zuixiaohua:before {
+  content: "\e66a";
+}
+
+.system-yonghu:before {
+  content: "\e603";
+}
+
+.system-jindutiaoshouyidaozhang:before {
+  content: "\e63c";
+}
+
+.system-xiaoxi:before {
+  content: "\e65b";
+}
+
+.system-shuliang_mianxing:before {
+  content: "\e61c";
+}
+
+.system-yanjing:before {
+  content: "\e67c";
+}
+
+.system-yanjing-guan:before {
+  content: "\e6fa";
+}
+
+.system-xingmingyonghumingnicheng:before {
+  content: "\e623";
+}
+
+.system-mima:before {
+  content: "\e654";
+}
+
+.system-shezhi:before {
+  content: "\e696";
+}
+
+.system-github:before {
+  content: "\e811";
+}
+
+.system-quanping:before {
+  content: "\e768";
+}
+
+.system-wenzi:before {
+  content: "\e735";
+}
+
+.system-quanping1:before {
+  content: "\e680";
+}

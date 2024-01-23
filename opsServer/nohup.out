@@ -1,0 +1,67 @@
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 05, 2024 - 01:49:55
+Django version 3.2.23, using settings 'opsServer.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[05/Jan/2024 02:08:24] "OPTIONS /login HTTP/1.1" 200 0
+[05/Jan/2024 02:08:25] "POST /login HTTP/1.1" 200 246
+[05/Jan/2024 02:08:52] "OPTIONS /updatepwd/ HTTP/1.1" 200 0
+Not Found: /updatepwd/
+[05/Jan/2024 02:08:52] "PUT /updatepwd/ HTTP/1.1" 404 2547
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 05, 2024 - 02:12:36
+Django version 3.2.23, using settings 'opsServer.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[05/Jan/2024 02:13:02] "POST /login HTTP/1.1" 200 246
+/home/opsWeb/opsServer/opsServer/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 05, 2024 - 02:16:11
+Django version 3.2.23, using settings 'opsServer.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Internal Server Error: /updatepwd/
+Traceback (most recent call last):
+  File "/root/anaconda3/lib/python3.11/site-packages/Django-3.2.23-py3.11.egg/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/anaconda3/lib/python3.11/site-packages/Django-3.2.23-py3.11.egg/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/anaconda3/lib/python3.11/site-packages/Django-3.2.23-py3.11.egg/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/anaconda3/lib/python3.11/site-packages/Django-3.2.23-py3.11.egg/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/views.py", line 415, in initial
+    self.check_permissions(request)
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/permissions.py", line 229, in has_permission
+    queryset = self._queryset(view)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/root/anaconda3/lib/python3.11/site-packages/djangorestframework-3.13.1-py3.11.egg/rest_framework/permissions.py", line 206, in _queryset
+    or getattr(view, 'queryset', None) is not None, (
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Cannot apply DjangoModelPermissionsOrAnonReadOnly on a view that does not set `.queryset` or have a `.get_queryset()` method.
+[05/Jan/2024 02:16:37] "PUT /updatepwd/ HTTP/1.1" 500 103849
