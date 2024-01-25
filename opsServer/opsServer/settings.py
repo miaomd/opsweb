@@ -25,7 +25,7 @@ SECRET_KEY = '$r+jq-m+-nd1gy+txkw_7(*b1qsfyaw%=crvr1fu!nk55)k4%)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.16.83.239']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'nas.miaomd.top','192.168.50.229']
 
 # 使用自定义的用户模块
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -88,10 +88,10 @@ DATABASES = {
         # 对接自己的MySQL数据库
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'opsweb',
-        'HOST': '10.16.87.246',
+        'HOST': 'localhost',
         'PORT': '3306',
-        'USER': 'tester',
-        'PASSWORD': '135412',
+        'USER': 'webdb',
+        'PASSWORD': 'Mmd@135412',
     }
 }
 
@@ -143,6 +143,11 @@ STATIC_URL = '/static/'
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_HEADERS = ('*')
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3001",
+#     # 添加其他允许的前端来源，如果有的话
+# ]
+
 
 # 验密通过后返回重定义内容
 JWT_AUTH = {
