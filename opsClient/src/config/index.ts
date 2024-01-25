@@ -7,7 +7,7 @@ const systemTitle = 'message.system.title' // 系统名称，用于显示在左�
 const systemSubTitle = 'message.system.subTitle' // 系统提示信息，用于登录模块使用
 
 /** 使用后端路由 */
-const isBackMenu = true
+const isBackMenu = false
 export {
   systemTitle,
   systemSubTitle,

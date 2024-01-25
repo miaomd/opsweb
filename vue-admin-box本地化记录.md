@@ -1114,6 +1114,92 @@ src\router\modules\systemManage.ts
   sudo apt install nginx
   ```
 
+##  启动 Nginx：
+
+```
+sudo systemctl start nginx
+```
+
+手动安装编译，采用一下方式
+
+/usr/local/nginx/sbin/
+
+```
+cd /data/nginx/sbin
+./nginx
+```
+
+或者
+
+```
+/data/nginx/sbin/nginx
+```
+
+nginx关闭
+
+```
+ps –ef | grep nginx 列出Nginx的相关进程
+kill pid 杀死Nginx相关进程，也相当于停止Nginx
+```
+
+或者
+
+```
+/data/nginx/sbin/nginx -s stop 停止Nginx
+```
+
+## 设置开机启动：
+
+```
+sudo systemctl enable nginx
+```
+
+### 如果手动编译和安装 Nginx：
+
+如果你手动编译和安装了 Nginx，你可能需要创建一个 systemd 服务单元文件。
+
+1. **在 `/etc/systemd/system/` 目录中创建 `nginx.service` 文件：**
+
+   ```
+   sudo nano /etc/systemd/system/nginx.service
+   ```
+
+   将以下内容粘贴到文件中：
+
+   ```
+   [Unit]
+   Description=nginx - high performance web server
+   After=network.target
+   
+   [Service]
+   ExecStart=/usr/local/nginx/sbin/nginx
+   ExecReload=/usr/local/nginx/sbin/nginx -s reload
+   ExecStop=/usr/local/nginx/sbin/nginx -s stop
+   KillMode=process
+   Restart=on-failure
+   RestartSec=3
+   PrivateTmp=true
+   
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+   注意：确保 `ExecStart`、`ExecReload` 和 `ExecStop` 的路径正确，根据你的安装路径进行调整。
+
+2. **重新加载 systemd 配置：**
+
+   ```
+   sudo systemctl daemon-reload
+   ```
+
+3. **启动 Nginx 服务：**
+
+   ```
+   sudo systemctl start nginx
+   ```
+
+   
+
 ## 配置NGINX
 
 - 查看Nginx配置文件的位置
@@ -1152,9 +1238,62 @@ src\router\modules\systemManage.ts
           root /usr/share/nginx/html;
       }
   }
+  
+  server {
+      listen 8000;  # 监听端口 8000
+      server_name localhost;
+  
+      location / {
+          proxy_pass http://localhost:8000;  # 代理到 Django 后端
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+      }
+  }
+  ```
+  
+  确保替换your_domain.com和/path/to/your/vue/project/dist为你的实际域名和Vue.js项目的实际路径。
+  
+- 前后端端口合一
+
+  ```
+      server {
+          listen       3080;  # 监听端口 3080
+          server_name localhost;
+  
+          location / {
+              root /home/opsweb/opsClient/dist; # 替换为你的Vue项目的dist目录的绝对路径
+              index index.html;
+              try_files $uri $uri/ /index.html;
+              # proxy_pass http://localhost:8000;  # 代理到 Django 后端
+              # proxy_http_version 1.1;
+              # proxy_set_header Upgrade $http_upgrade;
+              # proxy_set_header Connection 'upgrade';
+              # proxy_set_header Host $host;
+              # proxy_cache_bypass $http_upgrade;
+          }
+          location /api/ {
+              proxy_pass http://localhost:8000;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          }
+          #error_page  404              /404.html;
+  
+          # redirect server error pages to the static page /50x.html
+          #
+          error_page   500 502 503 504  /50x.html;
+          location = /50x.html {
+              root   html;
+          }
+  
+      }
+  
   ```
 
-  确保替换your_domain.com和/path/to/your/vue/project/dist为你的实际域名和Vue.js项目的实际路径。
+  
 
 ## 重启NGINX
 
